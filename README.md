@@ -1,14 +1,19 @@
-# crosspoint-sync
+# readmargin-sync
 
-A lightweight, self-hostable sync server for [CrossPoint / CrossInk](https://github.com) e-readers —
-and any KOReader device.
+ReadMargin's open sync layer — a lightweight, self-hostable KOSync-compatible sync server for
+[CrossPoint / CrossInk](https://github.com) e-readers and any KOReader device, with highlight sync.
+
+Forked from [crosspoint-sync](https://github.com/crosspoint-reader/crosspoint-sync) (MIT).
+`main` tracks upstream; product development happens on the `readmargin` branch. Unbranded
+improvements are PR'd upstream from separate feature branches off `main` — ReadMargin
+product changes stay fork-only.
 
 - **100% KOSync-compatible.** Point stock KOReader or current CrossPoint firmware at it by changing
   only the sync-server URL. Same accounts, same auth, same endpoints as `sync.koreader.rocks`.
 - **Better multi-device sync.** Progress is stored per device and the newest position wins, fixing
   the ping-pong you get with stock kosync servers.
 - **Server-side service connectors.** Link services such as Hardcover, Micro.blog, Audiobookshelf, BookOrbit, and Readwise Reader once; readers continue speaking standard KOSync while the server updates external reading state.
-- **Lossless CrossPoint sync.** An extended API carries the full CrossPoint position (spine,
+- **Lossless CrossPoint sync.** An extended API carries the full reader position (spine,
   paragraph, anchor, page hints), not just a lossy xpath + percentage.
 - **Bookmarks, clippings, and reading stats.** Delta sync with tombstones for bookmarks and
   clippings; per-device reading-stats snapshots with a server-side combined view (streaks included).
@@ -23,10 +28,10 @@ The full wire contract is in [docs/API.md](docs/API.md).
 ### Docker
 
 ```sh
-docker run -d --name crosspoint-sync \
+docker run -d --name readmargin-sync \
   -p 8080:8080 \
   -v crosspoint-data:/data \
-  ghcr.io/crosspoint-reader/crosspoint-sync:main
+  ghcr.io/mcsamuel/readmargin-sync:readmargin
 ```
 
 Or from a checkout: `docker compose up -d` uses the published image from
@@ -93,7 +98,7 @@ DATABASE_PATH=./data/crosspoint.db PORT=8080 node dist/index.js
 | `TRUST_PROXY` | `false` (`true` on Railway) | Set `true` only when direct access is blocked and a trusted reverse proxy overwrites any client-supplied `X-Forwarded-Proto`; permits connector linking through an HTTPS-terminating proxy. Defaults to `true` when `RAILWAY_ENVIRONMENT` is present, since Railway always fronts the service with its TLS-terminating edge; set `TRUST_PROXY=false` to override. |
 | `GOOGLE_BOOKS_API_KEY` | _(unset)_ | Optional. Fallback source for print page counts when Open Library has none (keyless Google Books has no quota). |
 | `HARDCOVER_API_KEY` | _(unset)_ | Optional. A Hardcover API key (`read:catalog` is enough) for book details from Hardcover's catalog: moods, genres, content warnings, rating, series, release year, and page counts/covers where other sources miss. One lookup per distinct book, cached for all users, throttled under Hardcover's free-plan limits. |
-| `LEGACY_WEB` | _(unset)_ | The website is the CrossPoint Sync app at `/app/` (the old account pages redirect there; Kindle setup keeps its pages). Set `1` to keep the old server-rendered website instead. |
+| `LEGACY_WEB` | _(unset)_ | The website is the ReadMargin app at `/app/` (the old account pages redirect there; Kindle setup keeps its pages). Set `1` to keep the old server-rendered website instead. |
 | `HARDCOVER_CLIENT_ID` | CrossPoint Sync's app | Optional. Hardcover OAuth client id for "Connect Hardcover" sign-in. The built-in id is CrossPoint Sync's public Hardcover app and works for self-hosted servers too; set this only to use your own Hardcover developer app. |
 | `SEARCHAPI_KEY` | _(unset)_ | Optional, paid ([searchapi.io](https://www.searchapi.io)). Last fallback for print page counts: Amazon search + product "Print length", 2 requests per book, only for books the free sources miss. Cached forever. |
 | `CORS_ORIGINS` | `*` | Origins allowed to call the sync API from browsers (comma-separated). The default wildcard is safe: the API authenticates with headers, not cookies, and the web UI's cookie routes never get CORS headers. |
@@ -102,10 +107,10 @@ DATABASE_PATH=./data/crosspoint.db PORT=8080 node dist/index.js
 
 1. Sign in to [Micro.blog](https://micro.blog/).
 2. Open [Account → App tokens](https://micro.blog/account/apps).
-3. Create a separate app token for **CrossPoint Sync**.
-4. In CrossPoint Sync, open your account, choose **Micro.blog**, and paste the new token.
+3. Create a separate app token for **ReadMargin**.
+4. In ReadMargin, open your account, choose **Micro.blog**, and paste the new token.
 
-Treat the token like a password: Micro.blog app tokens have full account access. CrossPoint Sync
+Treat the token like a password: Micro.blog app tokens have full account access. ReadMargin
 encrypts the token at rest using `TOKEN_ENC_KEY`.
 
 ## Point your reader at it
