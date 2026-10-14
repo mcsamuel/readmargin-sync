@@ -33,7 +33,7 @@ export async function folders(base, path = '/') {
 }
 
 // Reader settings shared by Send and Browse. optimize/quality drive the EPUB image optimizer.
-const PREFS = 'crosspoint-device'
+const PREFS = 'readmargin-device'
 const DEFAULTS = { host: DEFAULT_HOST, folder: '/', optimize: false, quality: 70, renameFromMetadata: false }
 export function loadDevicePrefs() {
   try {

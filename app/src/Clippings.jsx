@@ -75,8 +75,8 @@ export default function Clippings({ session, books }) {
   async function exportMd(save) {
     const md = `# Clippings\n\n${markdown(groups)}\n`
     if (save) {
-      await saveFile(new Blob([md], { type: 'text/markdown' }), 'CrossPoint clippings.md')
-      setNote(/iphone|ipad/i.test(navigator.userAgent) ? 'Saved to CrossPoint Sync in the Files app.' : 'Saved to your Downloads folder.')
+      await saveFile(new Blob([md], { type: 'text/markdown' }), 'ReadMargin clippings.md')
+      setNote(/iphone|ipad/i.test(navigator.userAgent) ? 'Saved to ReadMargin in the Files app.' : 'Saved to your Downloads folder.')
     } else {
       await navigator.clipboard.writeText(md)
       setNote(`Copied ${matches.length} clipping${matches.length === 1 ? '' : 's'} as Markdown.`)

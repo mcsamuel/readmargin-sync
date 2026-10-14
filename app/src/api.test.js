@@ -9,7 +9,7 @@ vi.stubGlobal('fetch', fetchMock)
 vi.stubGlobal('localStorage', new JSDOM('', { url: 'https://app.test' }).window.localStorage)
 const { api, cached, loadSession, login, logout, saveSession } = await import('./api.js')
 const session = (username, server = 'https://sync.test') => ({ server, username, key: 'key' })
-const prefix = (s) => `crosspoint-offline:v2:${s.username}@${s.server}`
+const prefix = (s) => `readmargin-offline:v2:${s.username}@${s.server}`
 const progress = '/api/v1/progress?limit=500'
 const response = (data, status = 200) => ({ ok: status >= 200 && status < 300, status, json: async () => data })
 
@@ -48,12 +48,12 @@ describe('account data isolation', () => {
 
   it('sign-out removes account data but preserves device preferences', async () => {
     saveSession(session('uxj4'))
-    localStorage.setItem('crosspoint-theme', 'dark')
+    localStorage.setItem('readmargin-theme', 'dark')
     localStorage.setItem(`${prefix(session('uxj4'))}${progress}`, JSON.stringify({ items: [] }))
     logout()
     expect(loadSession()).toBeNull()
     expect(cached.books(session('uxj4'))).toBeNull()
-    expect(localStorage.getItem('crosspoint-theme')).toBe('dark')
+    expect(localStorage.getItem('readmargin-theme')).toBe('dark')
   })
 
   it('cannot sign in offline using a previously cached authentication response', async () => {

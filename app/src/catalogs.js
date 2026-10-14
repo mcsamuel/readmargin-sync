@@ -4,7 +4,7 @@ import { ipcBytes } from './api.js'
 
 // OPDS catalogs the user added. Stored per device.
 // ponytail: credentials sit in localStorage like the sync login; move both to the OS keychain together.
-const KEY = 'crosspoint-catalogs'
+const KEY = 'readmargin-catalogs'
 const STARTERS = [{ id: 'gutenberg', name: 'Project Gutenberg', url: 'https://m.gutenberg.org/ebooks.opds/', auth: { kind: 'none' } }]
 
 export function loadCatalogs() {

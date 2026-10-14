@@ -14,7 +14,7 @@ async function publish(data, cover) {
 export function clearWidget() {
   version++
   last = ''
-  return publish({ label: 'CROSSPOINT SYNC', title: 'Sign in to see your reading', author: '', percent: -1, stats: '' }, '')
+  return publish({ label: 'READMARGIN', title: 'Sign in to see your reading', author: '', percent: -1, stats: '' }, '')
 }
 
 async function coverBase64(url) {
@@ -47,7 +47,7 @@ export async function updateWidget({ books, summary, activity }) {
     : `${pages.toLocaleString()} pages · ${finished} finished this year`
   const data = current
     ? { label: 'CONTINUE READING', title: current.title || current.filename, author: current.author ?? '', percent: Math.round(current.percentage * 100), stats }
-    : { label: 'CROSSPOINT SYNC', title: 'Nothing in progress', author: '', percent: -1, stats }
+    : { label: 'READMARGIN', title: 'Nothing in progress', author: '', percent: -1, stats }
   const key = JSON.stringify([data, current?.cover_url])
   if (key === last) return
   last = key

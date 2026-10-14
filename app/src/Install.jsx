@@ -5,7 +5,7 @@ import { isApp } from './api.js'
 // "Add to Home Screen" for the web version on phones. Chrome/Edge/Samsung on
 // Android hand us an install prompt to fire on tap; iOS has no API, so we show
 // the two taps it takes in Safari. Hidden once installed or dismissed.
-const KEY = 'crosspoint-install-dismissed'
+const KEY = 'readmargin-install-dismissed'
 const ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
 const installed = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone === true
 const phone = matchMedia('(pointer: coarse)').matches
@@ -67,7 +67,7 @@ export default function InstallPrompt() {
         <div className="min-w-0 flex-1">
           <p className="text-sm font-semibold text-stone-900">Get the app</p>
           {deferred ? (
-            <p className="text-xs text-stone-500">Add CrossPoint Sync to your home screen.</p>
+            <p className="text-xs text-stone-500">Add ReadMargin to your home screen.</p>
           ) : (
             <p className="text-xs/5 text-stone-500">
               Tap <Share className="inline size-3.5 -translate-y-px text-brand-600" aria-label="Share" /> then{' '}

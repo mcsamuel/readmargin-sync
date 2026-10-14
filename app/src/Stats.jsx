@@ -440,7 +440,7 @@ function ReadingCalendar({ days, readingDays = [], books = [] }) {
             title: `Reading days: ${label}`,
             postTitle: `My reading days, ${label}`,
             fileName: `Reading days ${label}.png`,
-            text: `${count} reading ${count === 1 ? 'day' : 'days'}, ${label}. Tracked with CrossPoint Sync.`,
+            text: `${count} reading ${count === 1 ? 'day' : 'days'}, ${label}. Tracked with ReadMargin.`,
           }}
           renderKey={`${scale}-${back}-${count}`}
           onClose={() => setSharing(false)}
@@ -678,7 +678,7 @@ function StatsShare({ summary, activity, books, onClose }) {
     title: heading,
     postTitle: mine,
     fileName: `${heading}.png`,
-    text: `${mine}: ${finished.length} finished, ${pages.toLocaleString()} pages read. Tracked with CrossPoint Sync.`,
+    text: `${mine}: ${finished.length} finished, ${pages.toLocaleString()} pages read. Tracked with ReadMargin.`,
   }
   return (
     <ShareSheet

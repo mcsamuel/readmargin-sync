@@ -24,8 +24,8 @@ export const http = isApp ? tauriFetch : fetch
 
 // kosync auth: x-auth-user + MD5(password), same credential the reader uses.
 // ponytail: stored in localStorage; move to the OS keychain (tauri-plugin-stronghold) if that matters.
-const KEY = 'crosspoint-sync-session'
-const LAST_SERVER = 'crosspoint-sync-last-server'
+const KEY = 'readmargin-sync-session'
+const LAST_SERVER = 'readmargin-sync-last-server'
 export const DEFAULT_SERVER = 'https://sync.crosspointreader.com'
 
 function read(key) {
@@ -53,7 +53,7 @@ export function logout() {
 // Offline: every successful GET is kept on the device; when the network is down
 // the last copy is served and an event lets the UI say so.
 // ponytail: localStorage (~5 MB); move to IndexedDB if libraries outgrow it.
-const OFFLINE_PREFIX = 'crosspoint-offline:'
+const OFFLINE_PREFIX = 'readmargin-offline:'
 // Older copies may have been filled by the dashboard cookie's account.
 const OFFLINE = `${OFFLINE_PREFIX}v2:`
 export const offline = new EventTarget()
@@ -121,7 +121,7 @@ async function resolveServer(input) {
       // unreachable over this scheme; try the next
     }
   }
-  throw new Error(`Could not reach a CrossPoint Sync server at ${input.trim()}.`)
+  throw new Error(`Could not reach a ReadMargin server at ${input.trim()}.`)
 }
 
 /** Create a sync account (the same registration a reader does), then sign in to it. */

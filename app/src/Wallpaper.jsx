@@ -10,7 +10,7 @@ import { DEFAULTS, DEVICES, DITHERS, autoLevels, placement, renderWallpaper, toB
 
 // Sleep-screen wallpaper creator, ported from zgredex's crosspoint-pxc-converter.
 // Settings other than the picture are remembered per device.
-const PREFS = 'crosspoint-wallpaper'
+const PREFS = 'readmargin-wallpaper'
 function loadPrefs() {
   try {
     const saved = JSON.parse(localStorage.getItem(PREFS)) ?? {}
