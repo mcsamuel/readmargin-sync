@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { ChartColumn, CloudOff, Compass, Quote, Eye, EyeOff, LibraryBig, Loader2, Lock, Send as SendIcon, Server, Settings as SettingsIcon, User } from 'lucide-react'
+import { ChartColumn, CloudOff, Compass, Quote, Eye, EyeOff, LibraryBig, Loader2, Lock, Send as SendIcon, Settings as SettingsIcon, User } from 'lucide-react'
 import { useTheme } from './theme.js'
-import { DEFAULT_SERVER, api, hostedServer, isApp, lastServer, loadSession, login, logout, offline, cached, register, saveSession } from './api.js'
+import { DEFAULT_SERVER, api, hostedServer, isApp, loadSession, login, logout, offline, cached, register, saveSession } from './api.js'
 import { ErrorNote, LoadCacheProvider, PageSkeleton, RefreshPill, Toaster, useLoad } from './ui.jsx'
 import Library from './Library.jsx'
 import Book from './Book.jsx'
@@ -31,10 +31,7 @@ function Field({ icon: Icon, trailing, inputRef, ...props }) {
 }
 
 function Login({ onLogin }) {
-  const [form, setForm] = useState(() => {
-    const server = lastServer()
-    return { selfHosted: server !== DEFAULT_SERVER, server: server === DEFAULT_SERVER ? '' : server, username: '', password: '' }
-  })
+  const [form, setForm] = useState({ username: '', password: '' })
   const [showPassword, setShowPassword] = useState(false)
   const [creating, setCreating] = useState(false) // create an account instead of signing in
   const [error, setError] = useState(null)
@@ -55,7 +52,7 @@ function Login({ onLogin }) {
     setBusy(true)
     setError(null)
     try {
-      const server = hostedServer ?? (form.selfHosted ? form.server : DEFAULT_SERVER)
+      const server = hostedServer ?? DEFAULT_SERVER
       if (creating && form.password.length < 4) throw new Error('Pick a password of at least 4 characters.')
       onLogin(await (creating ? register : login)(server, form.username, form.password))
     } catch (err) {
@@ -88,45 +85,7 @@ function Login({ onLogin }) {
           {creating ? 'Pick a username and password, then use the same ones in ReadMargin on your reader.' : 'Use the username and password from ReadMargin on your reader.'}
         </p>
 
-        {!hostedServer && (
-        <div className="mt-5 grid grid-cols-2 gap-1 rounded-2xl bg-stone-200/60 p-1">
-          {[
-            [false, 'ReadMargin'],
-            [true, 'Self-hosted'],
-          ].map(([v, label]) => (
-            <button
-              key={label}
-              type="button"
-              onClick={() => setForm({ ...form, selfHosted: v })}
-              className={`h-10 rounded-xl text-sm font-semibold transition ${
-                form.selfHosted === v ? 'bg-raised text-stone-900 shadow-sm' : 'text-stone-500 active:bg-stone-200'
-              }`}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-        )}
-
         <div className="mt-3 space-y-3">
-          {hostedServer ? null : form.selfHosted ? (
-            <Field
-              icon={Server}
-              value={form.server}
-              onChange={set('server')}
-              onKeyDown={next(usernameRef)}
-              placeholder="192.168.1.20:8080 or sync.example.com"
-              inputMode="url"
-              enterKeyHint="next"
-              autoCapitalize="none"
-              autoCorrect="off"
-              spellCheck={false}
-            />
-          ) : (
-            <p className="flex items-center gap-2 px-1 font-mono text-xs text-stone-500">
-              <Server className="size-3.5" /> {new URL(DEFAULT_SERVER).host}
-            </p>
-          )}
           <Field
             icon={User}
             inputRef={usernameRef}

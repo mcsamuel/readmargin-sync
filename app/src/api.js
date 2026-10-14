@@ -25,8 +25,7 @@ export const http = isApp ? tauriFetch : fetch
 // kosync auth: x-auth-user + MD5(password), same credential the reader uses.
 // ponytail: stored in localStorage; move to the OS keychain (tauri-plugin-stronghold) if that matters.
 const KEY = 'readmargin-sync-session'
-const LAST_SERVER = 'readmargin-sync-last-server'
-export const DEFAULT_SERVER = 'https://sync.crosspointreader.com'
+export const DEFAULT_SERVER = 'https://sync.readmargin.app'
 
 function read(key) {
   try {
@@ -37,7 +36,6 @@ function read(key) {
 }
 
 export const loadSession = () => read(KEY)
-export const lastServer = () => read(LAST_SERVER) ?? DEFAULT_SERVER
 
 // After a password change: the same session with the new key.
 export function saveSession(session) {
@@ -152,7 +150,6 @@ export async function login(server, username, password) {
   sessionVersion++
   clearOffline()
   localStorage.setItem(KEY, JSON.stringify(session))
-  localStorage.setItem(LAST_SERVER, JSON.stringify(session.server))
   return session
 }
 
