@@ -1,6 +1,6 @@
 {
-  "name": "CrossPoint Sync",
-  "short_name": "CrossPoint",
+  "name": "ReadMargin",
+  "short_name": "ReadMargin",
   "description": "Your reading, in sync everywhere.",
   "start_url": "./",
   "scope": "./",

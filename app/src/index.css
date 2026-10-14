@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Inter for body/UI, Lora for headlines (the original CrossPoint serif),
+  /* Inter for body/UI, Lora for headlines (display serif),
      Geist Mono for technical text. */
   --font-sans: "Inter Variable", "InterVariable", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-sans--font-feature-settings: "cv02", "cv03", "cv04", "cv11";
@@ -15,62 +15,61 @@
   /* Corners: cards and floating surfaces rounded-xl, large touch controls (h-12/h-14)
    rounded-2xl, chips and small buttons rounded-full, sheets 28px. */
 
-  /* Forest green, the single accent color */
-  --color-brand-50: #f0f5f3;
-  --color-brand-100: #d6e5de;
-  --color-brand-200: #b3cfc2;
-  --color-brand-300: #8fb9a6;
-  --color-brand-400: #69917d;
-  --color-brand-500: #4a7a62;
-  --color-brand-600: #3d6652;
-  --color-brand-700: #315243;
-  --color-brand-800: #253e33;
-  --color-brand-900: #1a2c24;
-  --color-brand-950: #101c16;
+  /* Warm paper page background. */
+  --color-stone-50: #faf7f1;
 
-  /* Card and control surfaces (white in light mode). */
-  --color-surface: #ffffff;
+  /* Ink blue — the single accent color. */
+  --color-brand-50: #f0f4f8;
+  --color-brand-100: #dce6f0;
+  --color-brand-200: #b9cde4;
+  --color-brand-300: #8fadd2;
+  --color-brand-400: #5f87b8;
+  --color-brand-500: #3a6a9c;
+  --color-brand-600: #2f5884;
+  --color-brand-700: #27476b;
+  --color-brand-800: #203858;
+  --color-brand-900: #1a2d46;
+  --color-brand-950: #111e30;
+
+  /* Card and control surfaces (warm white in light mode). */
+  --color-surface: #fffdf8;
   /* Selected segment in a stone track: lighter than its track in both modes. */
-  --color-raised: #ffffff;
+  --color-raised: #fffdf8;
   /* Placeholder cover paper for books without artwork. */
-  --color-cover: #f5f4ef;
-
-  /* Royalty.dev funding gold */
-  --color-royalty: #b8953a;
-  --color-royalty-dark: #9a7a2e;
+  --color-cover: #f3efe3;
 }
 
 html { color-scheme: light; }
 
-/* Dark mode: the same utilities, remapped. Stone flips so text-stone-900 stays the
-   strongest text and bg-stone-50 the page; brand keeps its mid tones for buttons
-   and lightens where it is used as text. Set by theme.js (and index.html, pre-paint). */
+/* Dark mode: the same utilities, remapped. Warm dark paper; brand keeps its mid
+   tones for buttons and lightens where it is used as text. Set by theme.js
+   (and index.html, pre-paint). */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --color-surface: #1b1917;
-  --color-raised: #3a3531;
-  --color-cover: #26231f;
-  --color-stone-50: #121110;
-  --color-stone-100: #221f1d;
-  --color-stone-200: #2e2a27;
-  --color-stone-300: #423d39;
-  --color-stone-400: #6f6963;
-  --color-stone-500: #a09993;
-  --color-stone-600: #bcb6b0;
-  --color-stone-700: #d3cec9;
-  --color-stone-800: #e5e1dd;
-  --color-stone-900: #f3f0ed;
-  --color-stone-950: #fbf9f7;
-  --color-brand-50: #16211c;
-  --color-brand-100: #1c2f26;
-  --color-brand-200: #284738;
-  --color-brand-300: #3a6451;
-  --color-brand-400: #558a70;
-  --color-brand-500: #4f8268;
-  --color-brand-600: #8fb9a6;
-  --color-brand-700: #b3cfc2;
-  --color-brand-800: #d6e5de;
-  --color-brand-900: #eef5f1;
+  --color-surface: #1f1c16;
+  --color-raised: #3b352c;
+  --color-cover: #272219;
+  --color-stone-50: #151310;
+  --color-stone-100: #201d17;
+  --color-stone-200: #2e2a22;
+  --color-stone-300: #443e33;
+  --color-stone-400: #71685a;
+  --color-stone-500: #a39a8b;
+  --color-stone-600: #bfb7a8;
+  --color-stone-700: #d5cfc0;
+  --color-stone-800: #e6e1d5;
+  --color-stone-900: #f3f0e6;
+  --color-stone-950: #fbf9f3;
+  --color-brand-50: #101a26;
+  --color-brand-100: #16233a;
+  --color-brand-200: #1f3350;
+  --color-brand-300: #2c4a6e;
+  --color-brand-400: #3a6a9c;
+  --color-brand-500: #4d82b5;
+  --color-brand-600: #7ba3cc;
+  --color-brand-700: #a9c4de;
+  --color-brand-800: #cfe0ef;
+  --color-brand-900: #e8f0f8;
   --color-red-50: #2a1515;
   --color-red-500: #f87171;
   --color-red-600: #f87171;

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 // Appearance: 'system' | 'light' | 'dark', remembered on this device. index.html
 // applies the same choice before first paint; keep the two in step.
 const KEY = 'readmargin-theme'
-const PAGE = { light: '#fafaf9', dark: '#121110' }
+const PAGE = { light: '#faf7f1', dark: '#151310' }
 const media = window.matchMedia('(prefers-color-scheme: dark)')
 
 export function loadTheme() {
