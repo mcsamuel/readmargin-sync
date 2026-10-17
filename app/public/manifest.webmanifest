@@ -1,6 +1,6 @@
 {
-  "name": "ReadMargin",
-  "short_name": "ReadMargin",
+  "name": "ReadMargin Sync",
+  "short_name": "ReadMargin Sync",
   "description": "Your reading, in sync everywhere.",
   "start_url": "./",
   "scope": "./",

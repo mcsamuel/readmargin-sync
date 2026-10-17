@@ -759,7 +759,7 @@ export default function Browse({ parts }) {
     return (
       <div className="px-4 pt-6">
         <Eyebrow>Browse</Eyebrow>
-        <Card className="mt-6 p-4 text-sm/6 text-stone-600">Browsing catalogs needs the ReadMargin app.</Card>
+        <Card className="mt-6 p-4 text-sm/6 text-stone-600">Browsing catalogs needs the ReadMargin Sync app.</Card>
       </div>
     )
   }

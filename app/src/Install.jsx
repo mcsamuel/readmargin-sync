@@ -67,7 +67,7 @@ export default function InstallPrompt() {
         <div className="min-w-0 flex-1">
           <p className="text-sm font-semibold text-stone-900">Get the app</p>
           {deferred ? (
-            <p className="text-xs text-stone-500">Add ReadMargin to your home screen.</p>
+            <p className="text-xs text-stone-500">Add ReadMargin Sync to your home screen.</p>
           ) : (
             <p className="text-xs/5 text-stone-500">
               Tap <Share className="inline size-3.5 -translate-y-px text-brand-600" aria-label="Share" /> then{' '}

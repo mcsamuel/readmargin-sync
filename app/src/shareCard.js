@@ -169,10 +169,10 @@ export async function renderCard({ quote, title, author, chapter, coverUrl }) {
   ctx.fillStyle = C.faint
   ctx.font = '500 26px "Inter Variable"'
   ctx.textAlign = 'right'
-  ctx.fillText('ReadMargin', W - PAD, H - 58)
+  ctx.fillText('ReadMargin Sync', W - PAD, H - 58)
   ctx.textAlign = 'left'
   if (logo) {
-    const lw = ctx.measureText('ReadMargin').width
+    const lw = ctx.measureText('ReadMargin Sync').width
     ctx.save()
     ctx.beginPath()
     ctx.roundRect(W - PAD - lw - 50, H - 90, 38, 38, 9)
@@ -321,15 +321,15 @@ async function statsBase(heading, tiles, cols = 2, tilesTop = 400, eyebrow = 'My
   return { canvas, ctx, bottom: tilesTop + 48 + (Math.ceil(Math.min(tiles.length, 4) / cols) - 1) * 170 }
 }
 
-// "ReadMargin" signature with the app logo, bottom right.
+// "ReadMargin Sync" signature with the app logo, bottom right.
 function signature(ctx, logo) {
   ctx.fillStyle = C.faint
   ctx.font = '500 26px "Inter Variable"'
   ctx.textAlign = 'right'
-  ctx.fillText('ReadMargin', W - PAD, H - 58)
+  ctx.fillText('ReadMargin Sync', W - PAD, H - 58)
   ctx.textAlign = 'left'
   if (logo) {
-    const lw = ctx.measureText('ReadMargin').width
+    const lw = ctx.measureText('ReadMargin Sync').width
     ctx.save()
     ctx.beginPath()
     ctx.roundRect(W - PAD - lw - 50, H - 90, 38, 38, 9)

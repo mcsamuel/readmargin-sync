@@ -309,7 +309,7 @@ export function LinkForm({ session, conn, onLinked }) {
 
   let body
   if (conn.id === 'kindle') {
-    body = <p className="text-sm text-stone-600">Link Kindle from the ReadMargin website with the browser extension.</p>
+    body = <p className="text-sm text-stone-600">Link Kindle from the ReadMargin Sync website with the browser extension.</p>
   } else if (conn.credential_kind === 'oauth') {
     const own = clientId
     body = !conn.oauth ? (
@@ -436,7 +436,7 @@ export function LinkForm({ session, conn, onLinked }) {
     body = tokenForm
   } else {
     // A sign-in this build doesn't know: never guess a token form for it.
-    body = <p className="text-sm text-stone-600">Update the ReadMargin app to link {conn.name}.</p>
+    body = <p className="text-sm text-stone-600">Update the ReadMargin Sync app to link {conn.name}.</p>
   }
   return (
     <div className="mt-3 space-y-2">
@@ -627,7 +627,7 @@ function Account({ session, onSession, onLogout }) {
       setPw({ next: '', again: '' })
       notify({
         title: 'Password changed',
-        detail: 'Enter the new one in ReadMargin on your reader too.',
+        detail: 'Enter the new one in ReadMargin Sync on your reader too.',
       })
     })
   }

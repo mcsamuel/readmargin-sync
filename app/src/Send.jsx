@@ -456,7 +456,7 @@ export default function Send() {
 
       {!isApp ? (
         <Card className="mt-6 p-4 text-sm/6 text-stone-600">
-          Sending books needs the ReadMargin app: a browser can&apos;t talk to your reader on the local network.
+          Sending books needs the ReadMargin Sync app: a browser can&apos;t talk to your reader on the local network.
         </Card>
       ) : (
         <div className="md:grid md:grid-cols-2 md:items-start md:gap-8">

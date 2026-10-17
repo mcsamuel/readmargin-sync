@@ -119,7 +119,7 @@ async function resolveServer(input) {
       // unreachable over this scheme; try the next
     }
   }
-  throw new Error(`Could not reach a ReadMargin server at ${input.trim()}.`)
+  throw new Error(`Could not reach a ReadMargin Sync server at ${input.trim()}.`)
 }
 
 /** Create a sync account (the same registration a reader does), then sign in to it. */

@@ -69,7 +69,7 @@ function Login({ onLogin }) {
         <div className="absolute inset-x-0 bottom-0 p-6 md:p-10">
           <img src={`${import.meta.env.BASE_URL}logo.png`} alt="" className="size-12 rounded-xl ring-1 ring-white/20 md:size-14" />
           <p className="mt-4 inline-block -rotate-1 font-hand text-2xl/7 text-brand-200">Your reading, everywhere</p>
-          <h1 className="font-display text-3xl/tight font-semibold tracking-tight text-white md:text-5xl/tight">ReadMargin</h1>
+          <h1 className="font-display text-3xl/tight font-semibold tracking-tight text-white md:text-5xl/tight">ReadMargin Sync</h1>
           <p className="mt-2 hidden max-w-md text-base/7 text-white/75 md:block">
             Progress, clippings and reading stats from every CrossPoint and CrossInk reader, in one place.
           </p>
@@ -82,7 +82,7 @@ function Login({ onLogin }) {
       >
         <h2 className="font-display text-2xl font-semibold text-stone-900">{creating ? 'Create your account' : 'Sign in'}</h2>
         <p className="mt-1 text-sm/6 text-stone-500">
-          {creating ? 'Pick a username and password, then use the same ones in ReadMargin on your reader.' : 'Use the username and password from ReadMargin on your reader.'}
+          {creating ? 'Pick a username and password, then use the same ones in ReadMargin Sync on your reader.' : 'Use the username and password from ReadMargin Sync on your reader.'}
         </p>
 
         <div className="mt-3 space-y-3">
@@ -221,7 +221,7 @@ function Sidebar({ route, session }) {
       {/* 44px band at the top, matching each page's first row (back button / title). */}
       <div className="flex h-11 items-center gap-2.5 px-2">
         <img src={`${import.meta.env.BASE_URL}logo.png`} alt="" className="size-8 rounded-lg" />
-        <span className="font-display text-lg font-semibold text-stone-900">ReadMargin</span>
+        <span className="font-display text-lg font-semibold text-stone-900">ReadMargin Sync</span>
       </div>
       <nav className="mt-8 space-y-1">
         {NAV.map((n) => (

@@ -35,7 +35,7 @@ afterEach(() => {
 describe('LinkForm', () => {
   it('never shows a token field for an unknown sign-in kind; asks to update the app', () => {
     render(<LinkForm session={session} conn={{ id: 'future', name: 'Future', credential_kind: 'magic' }} onLinked={() => {}} />)
-    expect(screen.getByText('Update the ReadMargin app to link Future.')).toBeTruthy()
+    expect(screen.getByText('Update the ReadMargin Sync app to link Future.')).toBeTruthy()
     expect(screen.queryByPlaceholderText('Paste token')).toBeNull()
   })
 
