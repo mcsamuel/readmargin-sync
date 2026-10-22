@@ -62,21 +62,11 @@ function Login({ onLogin }) {
   }
 
   return (
-    <div className="flex min-h-dvh flex-col bg-stone-50 md:flex-row">
-      <div className="relative m-3 h-[36dvh] min-h-60 shrink-0 overflow-hidden rounded-[28px] bg-brand-900 md:m-4 md:h-auto md:flex-1">
-        <div className="absolute inset-x-0 bottom-0 p-6 md:p-10">
-          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="" className="size-12 rounded-xl ring-1 ring-white/20 md:size-14" />
-          <p className="mt-4 inline-block -rotate-1 font-hand text-2xl/7 text-brand-200">Your reading, everywhere</p>
-          <h1 className="font-display text-3xl/tight font-semibold tracking-tight text-white md:text-5xl/tight">ReadMargin Sync</h1>
-          <p className="mt-2 hidden max-w-md text-base/7 text-white/75 md:block">
-            Progress, clippings and reading stats from every CrossPoint and CrossInk reader, in one place.
-          </p>
-        </div>
-      </div>
+    <div className="flex min-h-dvh flex-col items-center justify-center bg-stone-50">
 
       <form
         onSubmit={submit}
-        className="flex flex-1 flex-col px-5 pt-4 pb-[max(1.25rem,env(safe-area-inset-bottom))] md:max-w-md md:justify-center md:px-10 lg:max-w-lg lg:px-16"
+        className="flex w-full max-w-md flex-col px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] md:px-10"
       >
         <h2 className="font-display text-2xl font-semibold text-stone-900">{creating ? 'Create your account' : 'Sign in'}</h2>
         <p className="mt-1 text-sm/6 text-stone-500">
