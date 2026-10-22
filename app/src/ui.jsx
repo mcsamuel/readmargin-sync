@@ -65,17 +65,16 @@ export function Cover({ session, book, small = false, tiny = false, className = 
   )
 }
 
-// The CrossPoint mark with its left page turning over the spine: the app's loader.
+// The ReadMargin mark: the app's loader.
 export function LogoLoader({ className = 'size-10' }) {
   return (
-    <svg viewBox="98 59 316 392" role="img" aria-label="Loading" className={`cp-loader text-brand-500 ${className}`}>
-      <path
-        fill="currentColor"
-        d="M98 104.97A26 26 0 0 1 137.4 82.69L256 154L374.6 82.69A26 26 0 0 1 414 104.97L414 405.03A26 26 0 0 1 374.6 427.31L256 356L137.4 427.31A26 26 0 0 1 98 405.03Z"
-      />
-      <path className="cp-loader-mark" fill="var(--color-surface)" d="M281 342.5L388 278L388 408Z" />
-      <path className="cp-loader-page" fill="var(--color-surface)" d="M123 104L242 175L242 319L123 248Z" />
-    </svg>
+    <img
+      src={`${import.meta.env.BASE_URL}logo.png`}
+      alt=""
+      role="img"
+      aria-label="Loading"
+      className={`rm-loader ${className}`}
+    />
   )
 }
 
